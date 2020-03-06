@@ -20,11 +20,12 @@ public class ExampleUnitTest {
         Game game = new Game();
         boolean guessedCorrect = false;
         for (int i = 1; i < 11; ++i) {
-            guessedCorrect = game.check(i);
+            guessedCorrect = game.check(i, 10); //I manually changed the secret num
             if (guessedCorrect) {
                 break;
             }
         }
         assertTrue(guessedCorrect);
     }
+
 }

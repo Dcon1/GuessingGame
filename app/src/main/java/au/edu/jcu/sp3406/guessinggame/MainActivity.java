@@ -10,23 +10,26 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        game = new Game();
     }
     public void checkGuess(View view){
-        EditText userInput = (EditText)findViewById(R.id.editText);
+        EditText userInput = findViewById(R.id.editText);
         String num = userInput.getText().toString();
-        final int USERNUM = Integer.parseInt(num);
-        Button button = (Button)findViewById(R.id.button);
+        final Button button = findViewById(R.id.button);
+        final int userNum = Integer.parseInt(num);
+        final int ranNum = Game.setSecretNum();
         button.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(Game.check(USERNUM))
-                            displayResult(true);
+                        boolean result = Game.check(userNum, ranNum);
+                        displayResult(result);
                     }
                 }
         );

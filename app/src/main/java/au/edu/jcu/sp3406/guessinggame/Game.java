@@ -1,15 +1,13 @@
 package au.edu.jcu.sp3406.guessinggame;
-import android.widget.EditText;
 
 import java.util.Random;
-public class Game {
-    public static boolean check(int num){
-        Random random = new Random();
-        int randNum = random.nextInt(10);
-        if(randNum == num){
-            return true;
-        }
-        else
-            return false;
+class Game {
+    static boolean check(int userNnm, int secretNum) {
+        return secretNum == userNnm;
+    }
+
+    static int setSecretNum() {
+        Random randomNum = new Random();
+        return randomNum.nextInt(10);
     }
 }
